@@ -7,16 +7,92 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
+        <script type="text/javascript" src="https://api.tianditu.gov.cn/api?v=4.0&tk=6bf911bc7f3938007bdb52450d5e4d15"></script>
+    <style type="text/css">
+
+        #mapDiv {
+            width: 100%;
+            height: 40%;
+            position:absolute;
+            bottom:0;
+            left:0;
+            z-index:9998;
+
+        }
+        #textIn{
+            width: 100%;
+            height: 10%;
+            position:absolute;
+            bottom:0;
+            right:0;
+            z-index:9999;
+        }
+
+
+
+  }
+
+    </style>
+    <script>
+        var map;
+        var zoom = 18;
+
+        function onLoad() {
+            map = new T.Map('mapDiv');
+            map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
+            var cp = new T.CoordinatePickup(map, {
+                callback: getLngLat
+            })
+            cp.addEvent();
+        }
+
+        function getLngLat(lnglat) {
+            document.getElementById("lnglatStr").value = lnglat.lng.toFixed(6) + "," + lnglat.lat.toFixed(6);
+            //创建标注对象
+            //if (marker!=null)
+            //map.removeOverLay(marker);
+            // 如果不清除标注对象的话，则可以不断向图上添加点
+            map.clearOverLays();
+            var marker = new T.Marker(new T.LngLat(lnglat.lng.toFixed(6), lnglat.lat.toFixed(6)));
+            //向地图上添加标注
+
+            map.addOverLay(marker);
+
+        }
+
+        function Onclick()
+        {
+            var insertElement = document.createElement("p");
+            document.getElementById("scene").appendChild(insertElement);
+        }
+
+
+
+    </script>
     </head>
 
-    <body style="margin: 0; overflow: hidden;">
-        <a-scene
+    <body style="margin: 0; overflow: hidden;" onLoad ="onLoad()">
+
+    <div id="mapDiv" onclick="Onclick()">
+
+    </div>
+    <div id="textIn">
+        锚点坐标:
+        <input type="text" id="lnglatStr" value="" />
+    </div>
+
+
+
+    <a-scene
+            id ="scene"
+            embeded arjs
             renderer="logarithmicDepthBuffer: true;"
-            embedded
-            loading-screen="enabled: false;"
+            loading-screen="enabled: true;"
             arjs="sourceType: webcam; debugUIEnabled: false;"
+
         >
-            <a-assets>
+            <a-assets >
                 <a-asset-item
                     id="animated-asset"
                     src="assets/asset.gltf"
@@ -103,5 +179,8 @@
 
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
+
+
+
     </body>
 </html>
