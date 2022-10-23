@@ -26,18 +26,16 @@
             position:absolute;
             bottom:0;
             right:0;
-            z-index:9999;
+            z-index:9998;
         }
 
 
 
   }
-
     </style>
     <script>
         var map;
         var zoom = 18;
-
         function onLoad() {
             map = new T.Map('mapDiv');
             map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
@@ -61,11 +59,7 @@
 
         }
 
-        function Onclick()
-        {
-            var insertElement = document.createElement("p");
-            document.getElementById("scene").appendChild(insertElement);
-        }
+
 
 
 
@@ -83,14 +77,11 @@
     </div>
 
 
-
     <a-scene
-            id ="scene"
             embeded arjs
             renderer="logarithmicDepthBuffer: true;"
-            loading-screen="enabled: true;"
-            arjs="sourceType: webcam; debugUIEnabled: false;"
-
+            loading-screen="enabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: true;"
         >
             <a-assets >
                 <a-asset-item
