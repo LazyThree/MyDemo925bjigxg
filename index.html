@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar.js">
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
         <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
         <script type="text/javascript" src="https://api.tianditu.gov.cn/api?v=4.0&tk=6bf911bc7f3938007bdb52450d5e4d15"></script>
@@ -41,16 +41,16 @@
             iconSize: new T.Point(19, 27),
             iconAnchor: new T.Point(10, 25)
         });
-        
+
         var PointMarker = new T.Marker(new T.LngLat(0.0, 0.0), {
             icon: icon
         });
-        
-        
+
+
         function onLoad() {
             map = new T.Map('mapDiv');
             map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
-            
+
             //将选点标记进行注册
             var opacity = 0;
             PointMarker.setOpacity(opacity);
@@ -60,7 +60,7 @@
                 callback: getLngLat
             })
             cp.addEvent();
-            
+
             //将覆盖物的信息全部放在地图上表示
             var marker_1 = new T.Marker(new T.LngLat(120.120460,30.265340));
             map.addOverLay(marker_1);;
@@ -100,7 +100,7 @@
             var marker_1 = new T.Marker(new T.LngLat(120.1204974576831, 30.268117030310187));
             map.addOverLay(marker_1);
         }
-        
+
         function getLngLat(lnglat) {
             document.getElementById("lnglatStr").value = lnglat.lng.toFixed(6) + "," + lnglat.lat.toFixed(6);
             //创建标注对象
@@ -112,7 +112,7 @@
             //向地图上添加标注
 
             //map.addOverLay(marker);
-            
+
             PointMarker.setLngLat(lnglat);
             PointMarker.setOpacity(1);
             map.addOverLay(PointMarker);
@@ -126,9 +126,9 @@
     </script>
     </head>
 
-    <body style="margin: 0; overflow: hidden;"  onLoad ="onLoad()" >
+    <body style="margin: 0; overflow: hidden;" onLoad ="onLoad()">
 
-    <div id="mapDiv" >
+    <div id="mapDiv">
 
     </div>
     <div id="textIn">
