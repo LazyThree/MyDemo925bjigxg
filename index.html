@@ -39,12 +39,17 @@
         function onLoad() {
             map = new T.Map('mapDiv');
             map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
+            var icon = new T.Icon({
+            iconUrl: "http://api.tianditu.gov.cn/img/map/markerA.png",
+            iconSize: new T.Point(19, 27),
+            iconAnchor: new T.Point(10, 25)
+        });
             var cp = new T.CoordinatePickup(map, {
                 callback: getLngLat
             })
             cp.addEvent();
             
-                        //将覆盖物的信息全部放在地图上表示
+            //将覆盖物的信息全部放在地图上表示
             var marker_1 = new T.Marker(new T.LngLat(120.12095879763366, 30.265658666169855));
             map.addOverLay(marker_1);;
 
@@ -90,7 +95,7 @@
             //if (marker!=null)
             //map.removeOverLay(marker);
             // 如果不清除标注对象的话，则可以不断向图上添加点
-            map.clearOverLays();
+            //map.clearOverLays();
             var marker = new T.Marker(new T.LngLat(lnglat.lng.toFixed(6), lnglat.lat.toFixed(6)));
             //向地图上添加标注
 
