@@ -50,6 +50,11 @@
         function onLoad() {
             map = new T.Map('mapDiv');
             map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
+            
+            //将选点标记进行注册
+            var opacity = 0;
+            PointMarker.setOpacity(opacity);
+            map.addOverLay(PointMarker);
 
             var cp = new T.CoordinatePickup(map, {
                 callback: getLngLat
