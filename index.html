@@ -43,8 +43,47 @@
                 callback: getLngLat
             })
             cp.addEvent();
-        }
+            
+                        //将覆盖物的信息全部放在地图上表示
+            var marker_1 = new T.Marker(new T.LngLat(120.12095879763366, 30.265658666169855));
+            map.addOverLay(marker_1);;
 
+            var marker_1 = new T.Marker(new T.LngLat(120.12081932276489, 30.26541773745994));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12052427977325, 30.266643687022338));
+            map.addOverLay(marker_1);
+
+
+            var marker_1 = new T.Marker(new T.LngLat(120.11946212500335, 30.267036580722934));
+            map.addOverLay(marker_1);
+
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12023460119966, 30.266984689278928));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.1199932023883, 30.26698376258768));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12069057673217, 30.267097738617565));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12083005160095, 30.267435032619908));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12083005160095, 30.267435032619908));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12096952646972, 30.267767692327087));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.12077104300262, 30.267965990453526));
+            map.addOverLay(marker_1);
+
+            var marker_1 = new T.Marker(new T.LngLat(120.1204974576831, 30.268117030310187));
+            map.addOverLay(marker_1);
+        }
+        
         function getLngLat(lnglat) {
             document.getElementById("lnglatStr").value = lnglat.lng.toFixed(6) + "," + lnglat.lat.toFixed(6);
             //创建标注对象
