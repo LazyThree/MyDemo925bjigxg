@@ -36,14 +36,21 @@
     <script>
         var map;
         var zoom = 18;
-        function onLoad() {
-            map = new T.Map('mapDiv');
-            map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
-            var icon = new T.Icon({
+        var icon = new T.Icon({
             iconUrl: "http://api.tianditu.gov.cn/img/map/markerA.png",
             iconSize: new T.Point(19, 27),
             iconAnchor: new T.Point(10, 25)
         });
+        
+        var PointMarker = new T.Marker(new T.LngLat(0.0, 0.0), {
+            icon: icon
+        });
+        
+        
+        function onLoad() {
+            map = new T.Map('mapDiv');
+            map.centerAndZoom(new T.LngLat(120.120920, 30.265700), zoom);
+
             var cp = new T.CoordinatePickup(map, {
                 callback: getLngLat
             })
@@ -96,10 +103,14 @@
             //map.removeOverLay(marker);
             // 如果不清除标注对象的话，则可以不断向图上添加点
             //map.clearOverLays();
-            var marker = new T.Marker(new T.LngLat(lnglat.lng.toFixed(6), lnglat.lat.toFixed(6)));
+            //var marker = new T.Marker(new T.LngLat(lnglat.lng.toFixed(6), lnglat.lat.toFixed(6)));
             //向地图上添加标注
 
-            map.addOverLay(marker);
+            //map.addOverLay(marker);
+            
+            PointMarker.setLngLat(lnglat);
+            PointMarker.setOpacity(1);
+            map.addOverLay(PointMarker);
 
         }
 
